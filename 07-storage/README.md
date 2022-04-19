@@ -24,6 +24,7 @@ amplify add storage
  ◉ delete
 ```
 
+- ✔ Do you want to add a Lambda Trigger for your S3 Bucket? (y/N) · __No__
 
 ```sh
 amplify push
