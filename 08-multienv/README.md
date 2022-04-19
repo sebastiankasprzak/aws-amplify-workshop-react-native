@@ -178,6 +178,10 @@ $ amplify status
 
 `amplify status` will give you the list of resources that are currently enabled in your app.
 
+### Team environments
+
+On top of multi-environment, Amplify has a number of best practises when operating within a Team of developers. Read more [here](https://docs.amplify.aws/cli/teams/overview/)
+
 ---
 
 ## Congratulations on finishing your React Native application! 

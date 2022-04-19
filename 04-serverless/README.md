@@ -9,7 +9,7 @@ To add a serverless function, we can run the following command:
 ```sh
 $ amplify add function
 
-? Select which capability you want to add: Lambda function
+? Select which capability you want to add: Lambda function (serverless function)
 ? Provide an AWS Lambda function nam: basiclambda
 ? Choose the runtime that you want to use: NodeJS
 ? Choose the function template that you want to use: Hello World
@@ -76,7 +76,7 @@ To get started, we'll create a new function:
 ```sh
 $ amplify add function
 
-? Select which capability you want to add: Lambda function
+? Select which capability you want to add: Lambda function (serverless function)
 ? Provide an AWS Lambda function name: cryptofunction
 ? Choose the runtime that you want to use: NodeJS
 ? Choose the function template that you want to use: Serverless ExpressJS

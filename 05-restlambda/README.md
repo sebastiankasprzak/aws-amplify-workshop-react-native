@@ -40,29 +40,88 @@ Let's request some data from the API:
 
 ```js
 // App.js
-import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
-import { API } from 'aws-amplify'
+import React from 'react';
+import {
+  SafeAreaView,
+  View,
+  StyleSheet,
+  Text,
+  TextInput,
+  Button
+} from 'react-native';
+
+// imports from Amplify library
 import { withAuthenticator } from 'aws-amplify-react-native'
+import { API, graphqlOperation, Auth } from 'aws-amplify'
+import Amplify from 'aws-amplify';
+import config from './src/aws-exports';
+
+// import the GraphQL query
+import { listRestaurants } from './src/graphql/queries'
+// import the GraphQL mutation
+import { createRestaurant } from './src/graphql/mutations'
+
+Amplify.configure(config);
+
+// create client ID
+import { v4 as uuid } from 'uuid'
+const CLIENTID = uuid()
 
 class App extends React.Component {
+  // add additional state to hold form state as well as restaurant data returned from the API
   state = {
-    coins: []
+    name: '', description: '', city: '', restaurants: [], coins: []
   }
+  // execute the query in componentDidMount
   async componentDidMount() {
     try {
-      // to get all coins, do not send in a query parameter
-      // const data = await API.get('cryptoapi', '/coins')
+      const restaurantData = await API.graphql(graphqlOperation(listRestaurants))
+      console.log('restaurantData:', restaurantData)
+      this.setState({
+        restaurants: restaurantData.data.listRestaurants.items
+      })
+    } catch (err) {
+      console.log('error fetching restaurant data...', err)
+    }
+    try {
       const data = await API.get('cryptoapi', '/coins?limit=5&start=100')
       console.log('data from Lambda REST API: ', data)
       this.setState({ coins: data.coins })
     } catch (err) {
-      console.log('error fetching data..', err)
+      console.log('error fetching coin data...', err)
     }
+  }
+  // this method calls the API and creates the mutation
+  createRestaurant = async() => {
+    const { name, description, city  } = this.state
+    // store the restaurant data in a variable
+    const restaurant = {
+      name, description, city, clientId: CLIENTID
+    }
+    // perform an optimistic response to update the UI immediately
+    const restaurants = [...this.state.restaurants, restaurant]
+    this.setState({
+      restaurants,
+      name: '', description: '', city: ''
+      })
+    try {
+      // make the API call
+      await API.graphql(graphqlOperation(createRestaurant, {
+        input: restaurant
+      }))
+      console.log('item created!')
+    } catch (err) {
+      console.log('error creating restaurant...', err)
+    }
+  }
+  // change form state then user types into input
+  onChange = (key, value) => {
+    this.setState({ [key]: value })
   }
   render() {
     return (
-      <View>
+      <SafeAreaView style={styles.container}>
+        <View>
         {
           this.state.coins.map((c, i) => (
             <View key={i} style={styles.row}>
@@ -72,17 +131,52 @@ class App extends React.Component {
           ))
         }
       </View>
+        <TextInput
+          style={{ height: 50, margin: 5, backgroundColor: "#ddd" }}
+          onChangeText={v => this.onChange('name', v)}
+          value={this.state.name} placeholder='name'
+        />
+        <TextInput
+          style={{ height: 50, margin: 5, backgroundColor: "#ddd" }}
+          onChangeText={v => this.onChange('description', v)}
+          value={this.state.description} placeholder='description'
+        />
+        <TextInput
+          style={{ height: 50, margin: 5, backgroundColor: "#ddd" }}
+          onChangeText={v => this.onChange('city', v)}
+          value={this.state.city} placeholder='city'
+        />
+        <Button onPress={this.createRestaurant} title='Create Restaurant' />
+        {
+          this.state.restaurants.map((restaurant, index) => (
+            <View key={index} style={styles.item}>
+              <Text style={styles.name}>{restaurant.name}</Text>
+              <Text style={styles.description}>{restaurant.description}</Text>
+              <Text style={styles.city}>{restaurant.city}</Text>
+            </View>
+          ))
+        }
+      </SafeAreaView>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  row: { padding: 10 },
-  name: { fontSize: 20, marginBottom: 4 },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  item: { padding: 10 },
+  name: { fontSize: 20 },
+  description: { fontWeight: '600', marginTop: 4, color: 'rgba(0, 0, 0, .5)' },
+  city: { marginTop: 4 }
 })
 
-export default withAuthenticator(App, { includeGreetings: true })
+export default withAuthenticator(App, { includeGreetings: true });
 ```
+
+You should now be able to see coin prices within the app:
+![Screen 01](screen1.png)
 
 ---
 

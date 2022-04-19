@@ -336,6 +336,13 @@ You should be able to test out the app and add in a restaurant:
 
 ![Screen 02](screen2.png)
 
+To view the data in the console, run the `console` command and navigate to Queries:
+
+```sh
+$ amplify console api
+> GraphQL
+```
+
 ---
 
 ## Challenge
