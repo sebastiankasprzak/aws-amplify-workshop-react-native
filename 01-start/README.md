@@ -39,6 +39,11 @@ $ expo start
 $ amplify init
 ```
 
+? Enter a name for the project __RNAmplify__
+
+? Initialize the project with the above configuration? __No__
+
+Enter following configuration:
 - Enter a name for the project: __RNAmplify__
 - Enter a name for the environment: __dev__
 - Choose your default editor: __Visual Studio Code (or your favorite editor)__   
@@ -73,6 +78,8 @@ Amplify.configure(config)
 ```
 
 Now, our app is ready to start using our AWS services.
+
+---
 
 ---
 

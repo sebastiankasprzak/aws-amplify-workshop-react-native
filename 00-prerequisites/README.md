@@ -37,5 +37,15 @@ Configure Amplify CLI. For further details you can [watch the video guide](https
 
 ---
 
+### Installing additional dependencies
+Within a terminal run
+```
+npm install @react-native-picker/picker @react-native-async-storage/async-storage react-native-get-random-values --save
+```
+
+to install additional dependencies required for the project
+
+---
+
 ## Let's begin!
 ### [Lab 1 - Creating the initial App and connecting Amplify](../01-start/README.md)

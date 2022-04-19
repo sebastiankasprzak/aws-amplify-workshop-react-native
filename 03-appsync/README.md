@@ -11,13 +11,23 @@ $ amplify add api
 
 Answer the following questions
 
-- Please select from one of the above mentioned services __GraphQL__   
-- Provide API name: __RestaurantAPI__   
-- Choose the default authorization type for the API __API key__   
-- Enter a description for the API key __public__
-- After how many days from now the API key should expire __365__
-- Do you want to configure advanced settings for the GraphQL API __No__
-- Do you have an annotated GraphQL schema? __N__   
+- Select from one of the below mentioned services: __GraphQL__
+- Here is the GraphQL API that we will create. Select a setting to edit or continue Name: rnamplify
+- Provide API name: __RestaurantAPI__
+- Here is the GraphQL API that we will create. Select a setting to edit or continue Authorization modes: __API key__ (default, expiration time: 7 day
+s from now)
+- Choose the default authorization type for the API API key
+- Enter a description for the API key: · __public__
+- After how many days from now the API key should expire (1-365): · __365__
+- Configure additional auth types? __No__
+- Here is the GraphQL API that we will create. Select a setting to edit or continue Conflict detection (required for DataStore): __Disabled__
+- Enable conflict detection? __No__
+- Here is the GraphQL API that we will create. Select a setting to edit or continue
+  Name: __RestaurantAPI__
+  Authorization modes: API key (default, expiration time: 365 days from now)
+  Conflict detection (required for DataStore): Disabled
+❯ __Continue__
+
 - Choose a schema template: __Single object with fields (e.g. “Todo” with ID, name, description)__   
 - Do you want to edit the schema now? (Y/n) __Y__   
 
@@ -154,6 +164,10 @@ import { API, graphqlOperation } from 'aws-amplify'
 // import the GraphQL query
 import { listRestaurants } from './graphql/queries'
 
+import Amplify from 'aws-amplify'
+import config from './aws-exports'
+Amplify.configure(config)
+
 class App extends React.Component {
   // define some state to hold the data returned from the API
   state = {
@@ -224,12 +238,17 @@ import {
 import { withAuthenticator } from 'aws-amplify-react-native'
 import { API, graphqlOperation } from 'aws-amplify'
 
+import Amplify from 'aws-amplify'
+import config from './aws-exports'
+Amplify.configure(config)
+
 // import the GraphQL query
 import { listRestaurants } from './graphql/queries'
 // import the GraphQL mutation
 import { createRestaurant } from './graphql/mutations'
 
 // create client ID
+import 'react-native-get-random-values';
 import { v4 as uuid } from 'uuid'
 const CLIENTID = uuid()
 
