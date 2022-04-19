@@ -43,12 +43,12 @@ Next, we'll wrap our default export (the App component) with the `withAuthentica
 
 ```js
 function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  return (
+    <View style={styles.container}>
+    <Text>Open up App.js to start working on your app!</Text>
+    <StatusBar style="auto" />
+    </View>
+  );
 }
 
 export default withAuthenticator(App)
@@ -81,9 +81,9 @@ import Amplify from 'aws-amplify';
 import config from './src/aws-exports';
 import React from 'react';
 import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
+  SafeAreaView,
+  StyleSheet,
+  Text,
 } from 'react-native';
 import { withAuthenticator } from 'aws-amplify-react-native'
 import { Auth } from 'aws-amplify'
@@ -91,32 +91,32 @@ import { Auth } from 'aws-amplify'
 Amplify.configure(config);
 
 class App extends React.Component {
-  async componentDidMount() {
-    const user = await Auth.currentAuthenticatedUser()
-    console.log('user:', user)
-  }
-  render() {
-    return (
-      <SafeAreaView style={styles.container}>
-        <Text style={styles.title}>Hello World</Text>
-      </SafeAreaView>
-    )
-  }
+  async componentDidMount() {
+    const user = await Auth.currentAuthenticatedUser()
+    console.log('user:', user)
+  }
+  render() {
+    return (
+      <SafeAreaView style={styles.container}>
+        <Text style={styles.title}>Hello World</Text>
+      </SafeAreaView>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  title: {
-    fontSize: 28
-  }
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  title: {
+    fontSize: 28
+  }
 })
 
 export default withAuthenticator(App, {
-  includeGreetings: true
+  includeGreetings: true
 })
 ```
 
@@ -152,10 +152,10 @@ class App extends React.Component {
     console.log('user:', user)
   }
   signOut = () => {
-    Auth.signOut()
-      .then(() => this.props.onStateChange('signedOut'))
-      .catch(err => console.log('err: ', err))
-  }
+    Auth.signOut()
+      .then(() => this.props.onStateChange('signedOut'))
+      .catch(err => console.log('err: ', err))
+  }
   render() {
     return (
       <SafeAreaView style={styles.container}>
@@ -188,7 +188,7 @@ export default withAuthenticator(App, {
 
 To view a final solution for a custom authentication strategy, check out the __AWS Amplify React Native Auth Starter__ [here](https://github.com/aws-samples/aws-amplify-auth-starters/tree/react-native#aws-amplify-react-native-auth-starter).
 
-> This section is an overview and is considered an advanced part of the workshop. If you are not comfortable writing a custom authentication flow, I would read through this section and use it as a reference in the future. If you'd like to jump to the next section, click [here](https://github.com/MattJColes/aws-amplify-workshop-react-native#adding-a-graphql-api-with-aws-appsync).
+> This section is an overview and is considered an advanced part of the workshop. If you are not comfortable writing a custom authentication flow, I would read through this section and use it as a reference in the future. If you'd like to jump to the next section, proceed to: [Lab 3 - GraphQL API with AWS AppSync](../03-appsync/README.md).
 
 The `withAuthenticator` component is a really easy way to get up and running with authentication, but in a real-world application we probably want more control over how our form looks & functions.
 
