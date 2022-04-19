@@ -63,6 +63,8 @@ _Where is the event data coming from? It is coming from the values located in ev
 
 Feel free to test out the function by updating `event.json` with data of your own.
 
+---
+
 ### Adding a function running an express server and invoking it from an API call (http)
 
 Next, we'll build a function that will be running an [Express](https://expressjs.com/) server inside of it.

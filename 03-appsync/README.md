@@ -2,6 +2,7 @@
 
 ---
 
+### Adding an GraphQL API
 To add a GraphQL API, we can use the following command:
 
 ```sh
@@ -45,6 +46,8 @@ amplify push
 ? Enter maximum statement depth [increase from default if your schema is deeply nested] (2)
 ```
 
+---
+
 ### Optional - To mock and test the API locally, you can run the mock command:
 
 ```bash
@@ -60,6 +63,8 @@ AppSync Mock endpoint is running at http://10.219.99.136:20002
 Open the endpoint in the browser to use the GraphiQL Editor.
 
 From here, we can now test the API.
+
+---
 
 ### Adding mutations from within the GraphiQL Editor.
 
@@ -122,6 +127,8 @@ query getRestaurant {
   }
 }
 ```
+
+---
 
 ### Interacting with the GraphQL API from our client application - Querying for data
 
@@ -194,6 +201,8 @@ const styles = StyleSheet.create({
 
 export default withAuthenticator(App, { includeGreetings: true });
 ```
+
+---
 
 ## Performing mutations
 
@@ -314,6 +323,8 @@ const styles = StyleSheet.create({
 
 export default withAuthenticator(App, { includeGreetings: true });
 ```
+
+---
 
 ## Challenge
 

@@ -2,6 +2,8 @@
 
 ---
 
+### Adding an API Endpoint
+
 Now that we've created the cryptocurrency Lambda function let's add an API endpoint so we can invoke it via http.
 
 To add the REST API, we can use the following command:
@@ -27,6 +29,8 @@ $ amplify push
 
 ? Are you sure you want to continue? Y
 ```
+
+---
 
 ### Interacting with the new API
 

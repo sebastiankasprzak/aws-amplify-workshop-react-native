@@ -2,6 +2,8 @@
 
 ---
 
+### Adding Authentication
+
 To add authentication, we can use the following command:
 
 ```sh
@@ -23,6 +25,8 @@ To view the AWS services any time after their creation, run the following comman
 ```sh
 $ amplify console
 ```
+
+---
 
 ### Using the withAuthenticator component
 
@@ -54,6 +58,8 @@ CMD + r # Reloads the app
 CTRL + m # Opens debug menu
 rr # Reloads the app
 ```
+
+---
 
 ### Accessing User Data
 
@@ -101,6 +107,8 @@ export default withAuthenticator(App, {
   includeGreetings: true
 })
 ```
+
+---
 
 ### Signing out with a custom Sign Out button
 
@@ -157,6 +165,8 @@ const styles = StyleSheet.create({
 export default withAuthenticator(App);
 
 ```
+
+---
 
 ### Custom authentication strategies
 

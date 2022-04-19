@@ -2,6 +2,7 @@
 
 ---
 
+### Adding Analytics
 To add analytics, we can use the following command:
 
 ```sh
@@ -18,6 +19,8 @@ To deploy, run the `push` command:
 ```sh
 $ amplify push
 ```
+
+---
 
 ### Recording events
 

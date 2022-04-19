@@ -2,6 +2,7 @@
 
 ---
 
+### Adding Storage
 To add storage, we can use the following command:
 
 ```sh

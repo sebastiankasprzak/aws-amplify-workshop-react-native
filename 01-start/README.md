@@ -2,6 +2,8 @@
 
 ---
 
+### Getting Started
+
 To get started, we first need to create a new React Native project & change into the new directory.
 
 ```bash
@@ -18,6 +20,8 @@ $ yarn install --save aws-amplify aws-amplify-react-native uuid @react-native-co
 $ yarn add aws-amplify aws-amplify-react-native uuid
 ```
 
+---
+
 ### Running the app
 
 Next, run the app:
@@ -25,6 +29,7 @@ Next, run the app:
 ```sh
 $ expo start
 ```
+---
 
 ### Initializing A New AWS Amplify Project
 
@@ -48,22 +53,13 @@ $ amplify init
 
 Now, the AWS Amplify CLI has iniatilized a new project & you will see a couple of new files & folders: __amplify__ & __aws-exports.js__. These files hold your project configuration.
 
+---
+
 ### Configuring the React Native application
 
 The next thing we need to do is to configure our React Native application to be aware of our new AWS Amplify project. We can do this by referencing the auto-generated __aws-exports.js__ file that is now in our root folder.
 
-### If you are using the React Native CLI (not using Expo)
-
-To configure the app, open __index.js__ and add the following code below the last import:
-
-```js
-// index.js
-import Amplify from 'aws-amplify'
-import config from './aws-exports'
-Amplify.configure(config)
-```
-
-Now, our app is ready to start using our AWS services.
+---
 
 ### Configure the app for Amplify
 

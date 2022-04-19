@@ -8,6 +8,8 @@ To do so, we can create a clone of our existing environment, test it out, & then
 
 Once we are happy with the new feature, we can then merge it back into our main environment. Let's see how to do this!
 
+---
+
 ### Creating a new environment
 
 To create a new environment, we can run the `env` command:
@@ -109,6 +111,8 @@ query listRestaurants {
 }
 ```
 
+---
+
 ### Merging the new environment changes into the main environment.
 
 Now that we've created a new environment & tested it out, let's check out the main environment.
@@ -153,6 +157,8 @@ Now, we should be able to run the `list` command & see only our main environment
 ```sh
 $ amplify env list
 ```
+
+---
 
 ## Removing Services
 
