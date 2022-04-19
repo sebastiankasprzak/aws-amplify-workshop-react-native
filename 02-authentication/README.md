@@ -42,7 +42,16 @@ import { withAuthenticator } from 'aws-amplify-react-native';
 Next, we'll wrap our default export (the App component) with the `withAuthenticator` HOC:
 
 ```js
-export default withAuthenticator(App);
+function App() {
+  return (
+    <View style={styles.container}>
+      <Text>Open up App.js to start working on your app!</Text>
+      <StatusBar style="auto" />
+    </View>
+  );
+}
+
+export default withAuthenticator(App)
 ```
 
 Now, we can run the app and see that an Authentication flow has been added in front of our App component. This flow gives users the ability to sign up & sign in.
@@ -67,44 +76,47 @@ We can access the user's info now that they are signed in by calling `Auth.curre
 
 ```js
 // App.js
+import { StatusBar } from 'expo-status-bar';
+import Amplify from 'aws-amplify';
+import config from './src/aws-exports';
 import React from 'react';
 import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
+  SafeAreaView,
+  StyleSheet,
+  Text,
 } from 'react-native';
-
 import { withAuthenticator } from 'aws-amplify-react-native'
+import { Auth } from 'aws-amplify'
 
-import { Auth } from 'aws-amplify' 
+Amplify.configure(config);
 
 class App extends React.Component {
-  async componentDidMount() {
-    const user = await Auth.currentAuthenticatedUser()
-    console.log('user:', user)
-  }
-  render() {
-    return (
-      <SafeAreaView style={styles.container}>
-        <Text style={styles.title}>Hello World</Text>
-      </SafeAreaView>
-    )
-  }
+  async componentDidMount() {
+    const user = await Auth.currentAuthenticatedUser()
+    console.log('user:', user)
+  }
+  render() {
+    return (
+      <SafeAreaView style={styles.container}>
+        <Text style={styles.title}>Hello World</Text>
+      </SafeAreaView>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  title: {
-    fontSize: 28
-  }
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  title: {
+    fontSize: 28
+  }
 })
 
 export default withAuthenticator(App, {
-  includeGreetings: true
+  includeGreetings: true
 })
 ```
 
@@ -120,49 +132,53 @@ To do so, let's make a few updates:
 
 ```js
 // App.js
+import { StatusBar } from 'expo-status-bar';
+import Amplify from 'aws-amplify';
+import config from './src/aws-exports';
 import React from 'react';
 import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
+  SafeAreaView,
+  StyleSheet,
+  Text,
 } from 'react-native';
-
 import { withAuthenticator } from 'aws-amplify-react-native'
+import { Auth } from 'aws-amplify'
 
-import { Auth } from 'aws-amplify' 
+Amplify.configure(config);
 
 class App extends React.Component {
-  async componentDidMount() {
-    const user = await Auth.currentAuthenticatedUser()
-    console.log('user:', user)
-  }
-  signOut = () => {
-    Auth.signOut()
-      .then(() => this.props.onStateChange('signedOut'))
-      .catch(err => console.log('err: ', err))
-  }
-  render() {
-    return (
-      <SafeAreaView style={styles.container}>
-        <Text style={styles.title}>Hello World</Text>
-        <Text onPress={this.signOut}>Sign Out</Text>
-      </SafeAreaView>
-    )
-  }
+  async componentDidMount() {
+    const user = await Auth.currentAuthenticatedUser()
+    console.log('user:', user)
+  }
+  signOut = () => {
+    Auth.signOut()
+      .then(() => this.props.onStateChange('signedOut'))
+      .catch(err => console.log('err: ', err))
+  }
+  render() {
+    return (
+      <SafeAreaView style={styles.container}>
+        <Text style={styles.title}>Hello World</Text>
+      </SafeAreaView>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  title: {
-    fontSize: 28
-  }
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  title: {
+    fontSize: 28
+  }
 })
 
-export default withAuthenticator(App);
+export default withAuthenticator(App, {
+  includeGreetings: true
+})
 
 ```
 
