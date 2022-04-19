@@ -13,11 +13,7 @@ $ npx expo init RNAmplify
 
 $ cd RNAmplify
 
-$ npm install --save aws-amplify aws-amplify-react-native uuid @react-native-community/netinfo
-
-# or
-
-$ npm add aws-amplify aws-amplify-react-native uuid
+$ npm install aws-amplify aws-amplify-react-native @react-native-community/netinfo @react-native-async-storage/async-storage @react-native-picker/picker
 ```
 
 ---
@@ -29,9 +25,26 @@ Next, run the app:
 ```sh
 $ expo start
 ```
+
+![Expo Start](expo-start.png)
+
+You'll see a QR code within your terminal that you can scan with the Expo app on your iOS or Android device. Alternatively you can press ```a``` to launch the app within your Android Emulator or ```i``` to launch the app within your iOS Simulator.
+
+__Quick Tip 1:__ Pressing ```d```  within the Expo terminal window will load a Developer Tools web portal which has additional options including allowing you to change from a local network to a tunnelled network connection if you're mobile device isn't on the same network as your local computer.
+
+__Quick Tip 2:__ Pressing ```r``` within the Expo terminal window will force a hot reload. This can be handy if your app doesn't seem to have been updated on your device after you save a change in your IDE.
+
+You should see the following when the app has been launched on the device:
+
+![New project](new-app.png)
+
+Leave expo running in that terminal window as React Native and Expo support hot reloading of the app as we make changes :) 
+
+Open a second terminal window for commands we'll run with Amplify CLI.
+
 ---
 
-### Initializing A New AWS Amplify Project
+### Initializing a new AWS Amplify Project
 
 > Make sure to initialize this Amplify project in the root of your new React Native application
 
@@ -51,7 +64,7 @@ $ amplify init
 - Select the authentication method you want to use: __AWS profile__
 - Please choose the profile you want to use: __amplify-workshop-user__
 
-Now, the AWS Amplify CLI has iniatilized a new project & you will see a couple of new files & folders: __amplify__ & __aws-exports.js__. These files hold your project configuration.
+Now, the AWS Amplify CLI has iniatilized a new project & you will see a couple of new files & folders: __amplify__ & __/src/aws-exports.js__. These files hold your project configuration.
 
 ---
 
@@ -67,9 +80,9 @@ To configure the app, open __App.js__ and add the following code below the last 
 
 ```js
 // App.js
-import Amplify from 'aws-amplify'
-import config from './aws-exports'
-Amplify.configure(config)
+import Amplify from 'aws-amplify';
+import config from './src/aws-exports';
+Amplify.configure(config);
 ```
 
 Now, our app is ready to start using our AWS services.

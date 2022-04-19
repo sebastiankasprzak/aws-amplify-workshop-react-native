@@ -24,6 +24,8 @@ To view the AWS services any time after their creation, run the following comman
 
 ```sh
 $ amplify console
+
+> AWS console
 ```
 
 ---
@@ -34,15 +36,13 @@ To add authentication, we'll go into __App.js__ and first import the `withAuthen
 
 ```js
 // App.js
-import { withAuthenticator } from 'aws-amplify-react-native'
+import { withAuthenticator } from 'aws-amplify-react-native';
 ```
 
 Next, we'll wrap our default export (the App component) with the `withAuthenticator` HOC:
 
 ```js
-export default withAuthenticator(App, {
-  includeGreetings: true
-})
+export default withAuthenticator(App);
 ```
 
 Now, we can run the app and see that an Authentication flow has been added in front of our App component. This flow gives users the ability to sign up & sign in.
