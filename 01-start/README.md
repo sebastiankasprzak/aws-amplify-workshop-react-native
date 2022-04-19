@@ -13,11 +13,11 @@ $ npx expo init RNAmplify
 
 $ cd RNAmplify
 
-$ yarn install --save aws-amplify aws-amplify-react-native uuid @react-native-community/netinfo
+$ npm install --save aws-amplify aws-amplify-react-native uuid @react-native-community/netinfo
 
 # or
 
-$ yarn add aws-amplify aws-amplify-react-native uuid
+$ npm add aws-amplify aws-amplify-react-native uuid
 ```
 
 ---
@@ -46,8 +46,8 @@ $ amplify init
 - What javascript framework are you using __react-native__   
 - Source Directory Path: __/__   
 - Distribution Directory Path: __/__
-- Build Command: __yarn run-script build__   
-- Start Command: __yarn run-script start__   
+- Build Command: __npm run-script build__   
+- Start Command: __npm run-script start__   
 - Select the authentication method you want to use: __AWS profile__
 - Please choose the profile you want to use: __amplify-workshop-user__
 

@@ -8,7 +8,7 @@ In this workshop we'll learn how to build cloud-enabled mobile applications with
 
 ### Topics we'll cover:
 
-- [Prerequisites](./00-prerequisites/README.md)
+- [Pre-requisites](./00-prerequisites/README.md)
 - [Lab 1 - Creating the initial App and connecting Amplify](./01-start/README.md)
 - [Lab 2 - Authentication](./02-authentication/README.md)
 - [Lab 3 - GraphQL API with AWS AppSync](./03-appsync/README.md)
