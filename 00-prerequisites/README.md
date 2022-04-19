@@ -28,8 +28,6 @@ Install [NodeJS version 16.14.4](https://nodejs.org/en/download/) or higher (Nod
 
 [Install Expo](https://docs.expo.dev/get-started/installation/) - Within an terminal run ```npm install --global expo-cli```. The Expo CLI makes building and testing React Natives apps simpler for beginners to mobile application development.
 
-[Install Watchman](https://facebook.github.io/watchman/docs/install#buildinstall) - To monitor dependancy changes for hot reloading. This is available via package managers including [Homebrew on MacOS](https://docs.brew.sh/Installation) and [Chocolatey on Windows](https://chocolatey.org/install). You may need to run the package manager installation with elevated privileges (sudo on Mac, or right clicking your terminal app and choosing 'Run as Adminstrator' on Windows)
-
 Lastly, download the Expo app on your iOS or Android device if you'd like to test your app on a physical device.
 
 * [iOS Appstore](https://apps.apple.com/us/app/expo-go/id982107779)
