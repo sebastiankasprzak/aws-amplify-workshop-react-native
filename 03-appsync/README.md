@@ -12,12 +12,7 @@ $ amplify add api
 Answer the following questions
 
 - Please select from one of the above mentioned services __GraphQL__   
-- Provide API name: __RestaurantAPI__   
-- Choose the default authorization type for the API __API key__   
-- Enter a description for the API key __public__
-- After how many days from now the API key should expire __365__
-- Do you want to configure advanced settings for the GraphQL API __No__
-- Do you have an annotated GraphQL schema? __N__   
+- Here is the GraphQL API that we will create. Select a setting to edit or continue __Continue__
 - Choose a schema template: __Single object with fields (e.g. “Todo” with ID, name, description)__   
 - Do you want to edit the schema now? (Y/n) __Y__   
 
@@ -48,7 +43,7 @@ amplify push
 
 ---
 
-### Optional - To mock and test the API locally, you can run the mock command:
+### To mock and test the API locally, you can run the mock command:
 
 ```bash
 $ amplify mock api
@@ -57,7 +52,7 @@ $ amplify mock api
 This should start an AppSync Mock endpoint:
 
 ```
-AppSync Mock endpoint is running at http://10.219.99.136:20002
+AppSync Mock endpoint is running at http://localhost:20002
 ```
 
 Open the endpoint in the browser to use the GraphiQL Editor.
@@ -68,7 +63,7 @@ From here, we can now test the API.
 
 ### Adding mutations from within the GraphiQL Editor.
 
-In the GraphiQL editor, execute the following mutation to create a new restaurant in the API:
+In the GraphQL editor, execute the following mutation to create a new restaurant in the API:
 
 ```graphql
 mutation createRestaurant {
@@ -148,11 +143,16 @@ import {
 } from 'react-native';
 
 // imports from Amplify library
+// imports from Amplify library
 import { withAuthenticator } from 'aws-amplify-react-native'
 import { API, graphqlOperation } from 'aws-amplify'
+import Amplify from 'aws-amplify';
+import config from './src/aws-exports';
 
 // import the GraphQL query
-import { listRestaurants } from './graphql/queries'
+import { listRestaurants } from './src/graphql/queries'
+
+Amplify.configure(config);
 
 class App extends React.Component {
   // define some state to hold the data returned from the API
@@ -202,6 +202,10 @@ const styles = StyleSheet.create({
 export default withAuthenticator(App, { includeGreetings: true });
 ```
 
+You should be able to see the query within your Expo terminal:
+
+![Screen 01](screen1.png)
+
 ---
 
 ## Performing mutations
@@ -223,11 +227,15 @@ import {
 // imports from Amplify library
 import { withAuthenticator } from 'aws-amplify-react-native'
 import { API, graphqlOperation } from 'aws-amplify'
+import Amplify from 'aws-amplify';
+import config from './src/aws-exports';
 
 // import the GraphQL query
-import { listRestaurants } from './graphql/queries'
+import { listRestaurants } from './src/graphql/queries'
 // import the GraphQL mutation
-import { createRestaurant } from './graphql/mutations'
+import { createRestaurant } from './src/graphql/mutations'
+
+Amplify.configure(config);
 
 // create client ID
 import { v4 as uuid } from 'uuid'
@@ -323,6 +331,10 @@ const styles = StyleSheet.create({
 
 export default withAuthenticator(App, { includeGreetings: true });
 ```
+
+You should be able to test out the app and add in a restaurant:
+
+![Screen 02](screen2.png)
 
 ---
 

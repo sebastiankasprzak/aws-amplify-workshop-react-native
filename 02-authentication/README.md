@@ -68,6 +68,10 @@ CTRL + m # Opens debug menu
 rr # Reloads the app
 ```
 
+You should be able to create a user within the app now.
+
+![Screen 01](screen1.png)
+
 ---
 
 ### Accessing User Data
@@ -140,6 +144,8 @@ import {
   SafeAreaView,
   StyleSheet,
   Text,
+  TextInput,
+  Button
 } from 'react-native';
 import { withAuthenticator } from 'aws-amplify-react-native'
 import { Auth } from 'aws-amplify'
@@ -234,6 +240,10 @@ signUp = async() => {
   }
 }
 ```
+
+You should now see a sign-out button in the app:
+
+![Screen 02](screen2.png)
 
 ---
 

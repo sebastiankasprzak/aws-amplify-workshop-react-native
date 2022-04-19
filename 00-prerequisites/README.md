@@ -40,6 +40,8 @@ Lastly, download the Expo app on your iOS or Android device if you'd like to tes
 
 Configure Amplify CLI. For further details you can [watch the video guide](https://docs.amplify.aws/cli/start/install#option-1-watch-the-video-guide) or follow [these instructions](https://docs.amplify.aws/cli/start/install#option-2-follow-the-instructions)
 
+For local mocking features, JDK is required to be installed. Amazon has a version of JDK at no cost and multi-platform called [Amazon Corretto](https://docs.aws.amazon.com/corretto/latest/corretto-17-ug/downloads-list.html)
+
 ---
 
 ## Let's begin!
